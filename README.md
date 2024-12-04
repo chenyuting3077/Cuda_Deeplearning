@@ -16,3 +16,8 @@
   - [ ] Craft the Cuda code to optimize inference
 - [ ] Transformer classification
 - [ ] Optimize 
+
+### Reference
+[cats&dogs dataset Resnet50練習 by pytorch](https://ithelp.ithome.com.tw/articles/10288232?sc=rss.iron)
+
+[Dogs vs. Cats](https://www.kaggle.com/competitions/dogs-vs-cats/data)
