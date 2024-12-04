@@ -7,6 +7,7 @@ from tqdm import tqdm
 from CatDogDataset import CatDogDataset
 from torch.utils.data import DataLoader
 from torchprofile import profile_macs
+import time
 
 def calculate_parameters_and_flops(model):
     # Calculate the number of parameters
@@ -51,12 +52,19 @@ def inference():
     # inference
     correct = 0
     total = 0
+    # cal the time of inference of each image
+    str_time = time.time()
     for inputs, labels in tqdm(test_dataloader):
         outputs = model(inputs)
         _, predicted = torch.max(outputs, 1)
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
-    return 100 * correct / total
+    
+    end_time = time.time()
+    avg_time = (end_time - str_time) / test_dataloader_size
+    
+    
+    return 100 * correct / total, avg_time
     
 if __name__ == "__main__":
     model = init_model()
@@ -69,5 +77,6 @@ if __name__ == "__main__":
     test_dataloader, test_dataloader_size = init_data_loader()
     
     # inference
-    accuracy = inference()
-    print(f'Accuracy: {accuracy:.2f}%')
+    accuracy, avg_time = inference()
+    
+    print(f'Accuracy: {accuracy:.2f}%', f'Average time: {avg_time:.2f}s')
