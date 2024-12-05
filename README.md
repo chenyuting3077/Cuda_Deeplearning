@@ -37,14 +37,13 @@
 
 ## To-Do List
 
-- [ ] CNN classification (Dog & Cat)
-  - [x] Using Pytorch to create CNN (ResNet18)
-  - [ ] Compared accuracy & time
-  - [ ] Using tensorRT to optimize inference
-  - [ ] Craft the Cuda code to optimize inference
-  - [ ] Triton
-  - [ ] Eager mode
-  - [ ] torch.compile
+- [ ] CNN
+  - [ ] classification (Dog & Cat)
+    - [x] Using Pytorch to create CNN (ResNet18)
+    - [x] Compared accuracy & time
+    - [x] Using tensorRT to optimize inference
+    - [ ] Triton
+    - [ ] Craft the Cuda code to optimize inference
 - [ ] Transformer classification
 - [ ] Optimize 
 
