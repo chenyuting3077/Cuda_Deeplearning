@@ -27,7 +27,8 @@
   - [ ] Compared accuracy & time
   - [ ] Using tensorRT to optimize inference
   - [ ] Craft the Cuda code to optimize inference
-  - [ ] Triton 
+  - [ ] Triton
+  - [ ] Eager mode
 - [ ] Transformer classification
 - [ ] Optimize 
 
