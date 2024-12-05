@@ -25,16 +25,15 @@
 * ResNet-18
 * RTX3080 12GB
 * Batch size: 4
-* Num Testing Images: 7500
+* \# of Testing Images: 7500
   
-|                         | Precision   | Accuracy  | Per Image Time(ms)   | Parameters | Flops  | GPU VRAM Peak Usage |
-|  ----                   | ----        | ----      | ----                 | ----       | ----   | ----                |
-|  Pytorch                | fp32        | 92.72     | 10.255               | 11.18M     | 1.82G  | 44.76MB             |
-|  TensorRT (Default)     | fp32        | 92.73     |                      |            |        | 2.41MB              |
-|  TensorRT               | fp16        | 92.76     | 2.784                |            |        | 1.21MB              |
-|  TensorRT               | int8        |           |                      |            |        |                     |
-|  My Cuda model          |             |           |                      |            |        |                     |
-
+|                         | Precision   | Accuracy  | Per Image Time (ms) | GPU VRAM Peak Usage (MB)|
+|  ----                   | ----        | ----      | ----                | ----                     |
+|  Pytorch                | fp32        | 92.72     | 10.255              | 44.76                    |
+|  TensorRT (Default)     | fp32        | 92.73     | 2.657               | 2.41                     |
+|  TensorRT               | fp16        | 92.76     | 2.784               | 1.21                     |
+|  TensorRT               | int8        |           |                     |                          |
+|  My Cuda model          |             |           |                     |                          |
 
 ## To-Do List
 
