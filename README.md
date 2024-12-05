@@ -13,11 +13,11 @@
 * RTX3080 12GB
 * Batch size: 32
   
-|                               | Accuracy  | Per Image Time(s)         | Parameters | Flops  |
-|  ----                         | ----      | ----                      | ----       | ----   |
-|  Torchvision model            | 92.72     | 0.01                      | 11.18M     | 1.82G  |
-|  Torchvision model (TensorRT) |           |                           |            |        |
-|  My Cuda model                |           |                           |            |        |
+|                               | Accuracy  | Per Image Time(s)         | Parameters | Flops  | Memory Usage |
+|  ----                         | ----      | ----                      | ----       | ----   | ----         |
+|  Torchvision model            | 92.72     | 0.01                      | 11.18M     | 1.82G  |              |
+|  Torchvision model (TensorRT) |           |                           |            |        |              |
+|  My Cuda model                |           |                           |            |        |              |
 
 
 ## To-Do List
