@@ -29,6 +29,7 @@
   - [ ] Craft the Cuda code to optimize inference
   - [ ] Triton
   - [ ] Eager mode
+  - [ ] torch.compile
 - [ ] Transformer classification
 - [ ] Optimize 
 
