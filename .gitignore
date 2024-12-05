@@ -1,4 +1,4 @@
 data/
-CNN/tempCodeRunnerFile.py
-weights/model.pth
-CNN/__pycache__
+weights
+CNN/pytorch/__pycache__
+CNN/pytorch/tempCodeRunnerFile.py

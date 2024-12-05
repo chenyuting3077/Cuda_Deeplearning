@@ -9,6 +9,8 @@ from torch.utils.data import DataLoader
 from torchprofile import profile_macs
 import time
 
+Batch_size = 4
+
 def calculate_parameters_and_flops(model):
     # Calculate the number of parameters
     num_params = sum(p.numel() for p in model.parameters())
@@ -41,7 +43,7 @@ def init_data_loader():
     # data loader
     test_dir = '/home/allen/Desktop/Cuda_Deeplearning/data/dogs-vs-cats/test'
     test_dataset = CatDogDataset(test_dir, transform=test_transform)
-    test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+    test_dataloader = DataLoader(test_dataset, batch_size=Batch_size, shuffle=False)
     test_dataloader_size = len(test_dataset)
     return test_dataloader, test_dataloader_size
 
@@ -54,7 +56,7 @@ def inference():
     total = 0
     # cal the time of inference of each image
     str_time = time.time()
-    for inputs, labels in tqdm(test_dataloader):
+    for inputs, labels in test_dataloader:
         outputs = model(inputs)
         _, predicted = torch.max(outputs, 1)
         total += labels.size(0)
@@ -62,11 +64,13 @@ def inference():
     
     end_time = time.time()
     avg_time = (end_time - str_time) / test_dataloader_size
-    
+    avg_time *= 1000
     
     return 100 * correct / total, avg_time
     
 if __name__ == "__main__":
+    torch.cuda.reset_peak_memory_stats(device=None)
+    
     model = init_model()
      
     # Calculate the number of parameters and FLOPs
@@ -78,5 +82,8 @@ if __name__ == "__main__":
     
     # inference
     accuracy, avg_time = inference()
-    
-    print(f'Accuracy: {accuracy:.2f}%', f'Average time: {avg_time:.2f}s')
+    # print(f"gpu used {torch.cuda.max_memory_allocated(device=None)} memory")
+    # convert peak memory from bytes to GB
+    peak_memory = torch.cuda.max_memory_allocated(device=None) / 1e6
+    print(f"peak memory: {peak_memory:.2f}MB")
+    print(f'Accuracy: {accuracy:.2f}%', f'Average time: {avg_time:.3f}ms')
